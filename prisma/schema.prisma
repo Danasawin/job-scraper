@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Job {
+  id          String   @id @default(uuid())
+  title       String
+  company     String
+  description String?  @db.Text
+  level       JobLevel
+  location    String?
+  salary      String?
+  source      JobSource
+  sourceUrl   String   @unique
+  postedAt    DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isActive    Boolean  @default(true)
+
+  @@index([source])
+  @@index([level])
+  @@index([createdAt])
+  @@index([isActive])
+}
+
+model ScrapingLog {
+  id        String   @id @default(uuid())
+  source    JobSource
+  status    ScrapingStatus
+  jobsFound Int      @default(0)
+  jobsAdded Int      @default(0)
+  error     String?
+  startedAt DateTime @default(now())
+  endedAt   DateTime?
+}
+
+enum JobLevel {
+  ENTRY
+  JUNIOR
+  MID
+  SENIOR
+  UNKNOWN
+}
+
+enum JobSource {
+  LINKEDIN
+  JOBDB
+  JOBTHAI
+}
+
+enum ScrapingStatus {
+  RUNNING
+  SUCCESS
+  FAILED
+  PARTIAL
+}
