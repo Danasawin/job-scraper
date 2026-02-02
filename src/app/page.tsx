@@ -1,6 +1,5 @@
-import { JobsList } from '@/components/jobs-list'
-import { StatsCard } from '@/components/stats-card'
-import { SearchFilters } from '@/components/search-filters'
+import { JobsList } from '../components/jobs-list'
+import { StatsCard } from '../components/stats-card'
 
 export default function Home() {
   return (
@@ -18,10 +17,7 @@ export default function Home() {
       {/* Stats */}
       <StatsCard />
 
-      {/* Search & Filters */}
-      <SearchFilters />
-
-      {/* Jobs List */}
+      {/* Jobs List with Filters */}
       <JobsList />
     </div>
   )

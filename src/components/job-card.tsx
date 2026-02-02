@@ -29,6 +29,14 @@ const levelColors: Record<string, string> = {
   UNKNOWN: 'bg-gray-100 text-gray-600'
 }
 
+const levelLabels: Record<string, string> = {
+  ENTRY: 'Entry Level',
+  JUNIOR: 'Junior',
+  MID: 'Mid Level',
+  SENIOR: 'Senior',
+  UNKNOWN: 'Unknown'
+}
+
 const sourceColors: Record<string, string> = {
   LINKEDIN: 'bg-blue-50 text-blue-700 border-blue-200',
   JOBDB: 'bg-orange-50 text-orange-700 border-orange-200',
@@ -50,7 +58,7 @@ export function JobCard({ job }: JobCardProps) {
               {job.title}
             </h3>
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${levelColors[job.level] || levelColors.UNKNOWN}`}>
-              {job.level}
+              {levelLabels[job.level] || levelLabels.UNKNOWN}
             </span>
           </div>
 

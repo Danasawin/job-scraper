@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ScraperOrchestrator } from '@/agents'
+import { ScraperOrchestrator } from '../../../../agents'
 
 export async function GET(request: NextRequest) {
   try {

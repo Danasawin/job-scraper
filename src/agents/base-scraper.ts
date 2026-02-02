@@ -23,6 +23,8 @@ export abstract class BaseScraper {
     'developer',
     'engineer',
     'data engineer',
+    'data analyst',
+    'data analysis',
     'devops',
     'devsecops',
     'cloud engineer',

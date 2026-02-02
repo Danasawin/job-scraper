@@ -9,6 +9,8 @@ export class LinkedInScraper extends BaseScraper {
     'developer',
     'software engineer',
     'data engineer',
+    'data analyst',
+    'data analysis',
     'devops engineer',
     'cloud engineer'
   ]

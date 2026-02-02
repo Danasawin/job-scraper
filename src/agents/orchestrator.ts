@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma'
+import { prisma } from '../lib/prisma'
 import { LinkedInScraper } from './linkedin-scraper'
 import { JobDBScraper } from './jobdb-scraper'
 import { JobThaiScraper } from './jobthai-scraper'

@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0",
+    "dev:cron": "tsx cron-scheduler.ts & next dev -H 0.0.0.0",
+    "cron": "tsx cron-scheduler.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,25 +15,28 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
-    "next": "14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@prisma/client": "^5.9.0",
-    "cheerio": "^1.0.0-rc.12",
+    "@types/node-cron": "^3.0.11",
     "axios": "^1.6.5",
+    "cheerio": "^1.0.0-rc.12",
     "date-fns": "^3.3.0",
-    "lucide-react": "^0.312.0"
+    "lucide-react": "^0.312.0",
+    "next": "14.1.0",
+    "node-cron": "^4.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.33",
-    "tailwindcss": "^3.4.1",
-    "prisma": "^5.9.0",
     "eslint": "^8.56.0",
-    "eslint-config-next": "14.1.0"
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.4.33",
+    "prisma": "^5.9.0",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.3.3"
   }
 }
