@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { JobCard } from './job-card'
-import { Loader2 } from 'lucide-react'
+import { Loader2, ChevronLeft, ChevronRight } from 'lucide-react'
 import { SearchFilters } from './search-filters'
 
 interface Job {
@@ -172,23 +172,25 @@ export function JobsList() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center items-center gap-4 mt-8">
           <button
             onClick={() => setPage(p => Math.max(1, p - 1))}
             disabled={page === 1 || loading}
-            className="px-4 py-2 border rounded-lg disabled:opacity-50 hover:bg-gray-50"
+            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50 hover:border-gray-400 transition-colors"
           >
+            <ChevronLeft className="w-4 h-4" />
             Previous
           </button>
-          <span className="px-4 py-2 text-gray-600">
+          <span className="px-4 py-2 text-gray-700 font-medium bg-gray-100 rounded-lg">
             Page {page} of {totalPages}
           </span>
           <button
             onClick={() => setPage(p => Math.min(totalPages, p + 1))}
             disabled={page === totalPages || loading}
-            className="px-4 py-2 border rounded-lg disabled:opacity-50 hover:bg-gray-50"
+            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50 hover:border-gray-400 transition-colors"
           >
             Next
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       )}
