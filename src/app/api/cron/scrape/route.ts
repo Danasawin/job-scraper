@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ScraperOrchestrator } from '../../../../agents'
 
 // Force dynamic to prevent static generation error
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function GET(request: NextRequest) {
   try {
@@ -23,6 +23,8 @@ export async function GET(request: NextRequest) {
     
     console.log('[Cron] Starting daily scrape...')
     
+    // Dynamic import to avoid build-time bundling issues
+    const { ScraperOrchestrator } = await import('../../../../agents')
     const orchestrator = new ScraperOrchestrator()
     const results = await orchestrator.runAll()
     

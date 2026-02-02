@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '../../../lib/prisma'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,6 +14,9 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search')
     const jobType = searchParams.get('jobType')
     const timePosted = searchParams.get('timePosted')
+    
+    // Dynamic import prisma
+    const { prisma } = await import('../../../lib/prisma')
     
     const where: any = { isActive: true }
     

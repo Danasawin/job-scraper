@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ScraperOrchestrator } from '../../../agents'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,6 +17,8 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { agent } = body || {}
     
+    // Dynamic import to avoid build-time bundling issues
+    const { ScraperOrchestrator } = await import('../../../agents')
     const orchestrator = new ScraperOrchestrator()
     
     let results
