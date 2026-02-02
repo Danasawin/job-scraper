@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ScraperOrchestrator } from '../../../../agents'
 
+// Force dynamic to prevent static generation error
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     // Verify cron secret
